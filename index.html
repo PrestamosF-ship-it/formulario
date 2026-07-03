@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulá tu crédito - Préstamos Flash</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="sim-page">
+  <div id="moneyRain" class="money-rain" aria-hidden="true"></div>
+
+  <main class="shell">
+    <header class="hero card">
+      <div class="brand-row">
+        <img src="assets/logo-flash.png" alt="Logo Préstamos Flash" class="brand-logo" />
+        <div>
+          <span class="eyebrow">Préstamos Flash</span>
+          <h1>Simulá tu crédito online</h1>
+          <p class="muted">Elegí el tipo de crédito, ingresá el monto, seleccioná el plazo y mirá en el momento cuánto sería tu cuota fija en pesos.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="content-grid">
+      <div class="left-column">
+        <section class="card block-card">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Paso 1</span>
+              <h2>Elegí tu simulación</h2>
+            </div>
+            <span class="badge">Cuotas fijas</span>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-btn active" type="button" data-accordion="weeklyPanel">
+              <span>
+                <strong>Créditos desde $10.000</strong>
+                <small>Con devolución en cuotas semanales</small>
+              </span>
+              <b>▾</b>
+            </button>
+
+            <div class="accordion-panel open" id="weeklyPanel">
+              <div class="grid two">
+                <label class="field">
+                  <span>Monto solicitado</span>
+                  <input id="weeklyAmount" type="number" min="10000" step="1000" value="10000" inputmode="numeric" />
+                </label>
+                <label class="field">
+                  <span>Plazo de cuotas</span>
+                  <select id="weeklyPlan">
+                    <option value="weekly2">2 cuotas semanales · 25% interés</option>
+                    <option value="weekly4">4 cuotas semanales · 40% interés</option>
+                    <option value="weekly8">8 cuotas semanales · 60% interés</option>
+                  </select>
+                </label>
+              </div>
+              <div id="weeklyResult" class="result-box"></div>
+            </div>
+
+            <button class="accordion-btn" type="button" data-accordion="monthlyPanel">
+              <span>
+                <strong>Créditos desde $100.000</strong>
+                <small>Con devolución en cuotas mensuales</small>
+              </span>
+              <b>▾</b>
+            </button>
+
+            <div class="accordion-panel" id="monthlyPanel">
+              <div class="grid two">
+                <label class="field">
+                  <span>Monto solicitado</span>
+                  <input id="monthlyAmount" type="number" min="100000" step="10000" value="100000" inputmode="numeric" />
+                </label>
+                <label class="field">
+                  <span>Plazo de cuotas</span>
+                  <select id="monthlyPlan">
+                    <option value="monthly3">3 cuotas mensuales · 40% interés</option>
+                    <option value="monthly6">6 cuotas mensuales · 70% interés</option>
+                    <option value="monthly12">12 cuotas mensuales · 130% interés</option>
+                    <option value="monthly16">16 cuotas mensuales · 200% interés</option>
+                  </select>
+                </label>
+              </div>
+              <div id="monthlyResult" class="result-box"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <form class="card form-card" id="creditForm">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Paso 2</span>
+            <h2>Completá tus datos</h2>
+          </div>
+          <span class="badge light">Solicitud</span>
+        </div>
+
+        <div class="grid two">
+          <label class="field">
+            <span>Nombre y apellido</span>
+            <input id="fullName" autocomplete="name" placeholder="Ej: María Pérez" required />
+          </label>
+          <label class="field">
+            <span>DNI / CUIL</span>
+            <input id="dniCuil" inputmode="numeric" placeholder="Ej: 30123456" required />
+          </label>
+          <label class="field">
+            <span>Dirección</span>
+            <input id="address" autocomplete="street-address" placeholder="Calle, número, localidad" required />
+          </label>
+          <label class="field">
+            <span>Código postal</span>
+            <input id="postalCode" autocomplete="postal-code" inputmode="numeric" placeholder="Ej: 2500" required />
+          </label>
+          <label class="field">
+            <span>Garante, si tiene</span>
+            <input id="guarantor" placeholder="Nombre / teléfono / vínculo" />
+          </label>
+          <label class="field">
+            <span>Ingreso mensual aprox.</span>
+            <input id="monthlyIncome" type="number" min="0" step="1000" inputmode="numeric" placeholder="Ej: 300000" required />
+          </label>
+        </div>
+
+        <div class="work-box">
+          <span>Situación laboral</span>
+          <div class="check-grid">
+            <label class="checkline"><input type="checkbox" name="workStatus" value="Desempleado" /> Desempleado</label>
+            <label class="checkline"><input type="checkbox" name="workStatus" value="Asignación" /> Asignación</label>
+            <label class="checkline"><input type="checkbox" name="workStatus" value="Pensionado" /> Pensionado</label>
+            <label class="checkline"><input type="checkbox" name="workStatus" value="Jubilado" /> Jubilado</label>
+            <label class="checkline"><input type="checkbox" name="workStatus" value="Comerciante" /> Comerciante</label>
+          </div>
+        </div>
+
+        <div class="selected-box" id="selectedSummary"></div>
+
+        <button class="btn submit-btn" type="submit">Enviar formulario por WhatsApp</button>
+        <p class="legal muted">Al enviar, se abrirá WhatsApp con la simulación y los datos cargados para que puedas revisarlos antes de mandarlos.</p>
+      </form>
+    </section>
+  </main>
+
+  <script src="simulador.js"></script>
+</body>
+</html>
